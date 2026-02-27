@@ -1,11 +1,15 @@
 import { useState } from "react";
 
-type Mood = "sad" | "neutral" | "happy" | null;
+type Mood = "sad" | "neutral" | "happy" | "motivated" | "lazy" | "anxious" | "confident" | null;
 
 const moods = [
-  { key: "sad" as const, emoji: "😢", label: "Sad", color: "mood-sad" },
-  { key: "neutral" as const, emoji: "😐", label: "Neutral", color: "mood-neutral" },
   { key: "happy" as const, emoji: "😊", label: "Happy", color: "mood-happy" },
+  { key: "motivated" as const, emoji: "🔥", label: "Motivated", color: "mood-motivated" },
+  { key: "confident" as const, emoji: "💪", label: "Confident", color: "mood-confident" },
+  { key: "neutral" as const, emoji: "😐", label: "Neutral", color: "mood-neutral" },
+  { key: "anxious" as const, emoji: "😰", label: "Anxious", color: "mood-anxious" },
+  { key: "lazy" as const, emoji: "😴", label: "Lazy", color: "mood-lazy" },
+  { key: "sad" as const, emoji: "😢", label: "Sad", color: "mood-sad" },
 ];
 
 const MoodSelector = () => {
