@@ -30,14 +30,18 @@ const Insights = () => {
   }
 
   const total = entries.length;
-  const counts = { happy: 0, neutral: 0, sad: 0 };
+  const counts: Record<string, number> = { happy: 0, motivated: 0, confident: 0, neutral: 0, anxious: 0, lazy: 0, sad: 0 };
   entries.forEach((e) => {
-    if (e.mood_type in counts) counts[e.mood_type as keyof typeof counts]++;
+    if (e.mood_type in counts) counts[e.mood_type]++;
   });
 
   const moodData = [
     { key: "happy", emoji: "😊", label: "Happy", count: counts.happy, color: "bg-accent" },
+    { key: "motivated", emoji: "🔥", label: "Motivated", count: counts.motivated, color: "bg-orange-400" },
+    { key: "confident", emoji: "💪", label: "Confident", count: counts.confident, color: "bg-emerald-400" },
     { key: "neutral", emoji: "😐", label: "Neutral", count: counts.neutral, color: "bg-muted-foreground/30" },
+    { key: "anxious", emoji: "😰", label: "Anxious", count: counts.anxious, color: "bg-yellow-400" },
+    { key: "lazy", emoji: "😴", label: "Lazy", count: counts.lazy, color: "bg-indigo-300" },
     { key: "sad", emoji: "😢", label: "Sad", count: counts.sad, color: "bg-primary/40" },
   ];
 
@@ -91,7 +95,7 @@ const Insights = () => {
               {recent.map((e, i) => (
                 <div key={i} className="flex flex-col items-center gap-1">
                   <span className="text-2xl">
-                    {e.mood_type === "happy" ? "😊" : e.mood_type === "sad" ? "😢" : "😐"}
+                    {{ happy: "😊", sad: "😢", neutral: "😐", motivated: "🔥", lazy: "😴", anxious: "😰", confident: "💪" }[e.mood_type] || "😐"}
                   </span>
                   <span className="text-[10px] text-muted-foreground">
                     {new Date(e.created_at).toLocaleDateString("en", { weekday: "short" })}

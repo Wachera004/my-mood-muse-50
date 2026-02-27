@@ -3,12 +3,16 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 
-type Mood = "sad" | "neutral" | "happy";
+type Mood = "sad" | "neutral" | "happy" | "motivated" | "lazy" | "anxious" | "confident";
 
 const moods = [
-  { key: "sad" as const, emoji: "😢", label: "Sad" },
-  { key: "neutral" as const, emoji: "😐", label: "Neutral" },
   { key: "happy" as const, emoji: "😊", label: "Happy" },
+  { key: "motivated" as const, emoji: "🔥", label: "Motivated" },
+  { key: "confident" as const, emoji: "💪", label: "Confident" },
+  { key: "neutral" as const, emoji: "😐", label: "Neutral" },
+  { key: "anxious" as const, emoji: "😰", label: "Anxious" },
+  { key: "lazy" as const, emoji: "😴", label: "Lazy" },
+  { key: "sad" as const, emoji: "😢", label: "Sad" },
 ];
 
 const LogMood = () => {
@@ -43,7 +47,7 @@ const LogMood = () => {
 
       <div className="bg-card rounded-2xl shadow-lg border border-border p-6 space-y-6">
         {/* Emoji Selection */}
-        <div className="flex justify-center gap-4">
+        <div className="grid grid-cols-4 gap-3 justify-items-center">
           {moods.map((mood) => {
             const isSelected = selectedMood === mood.key;
             return (

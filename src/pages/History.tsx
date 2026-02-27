@@ -14,6 +14,10 @@ const moodEmoji: Record<string, string> = {
   happy: "😊",
   neutral: "😐",
   sad: "😢",
+  motivated: "🔥",
+  lazy: "😴",
+  anxious: "😰",
+  confident: "💪",
 };
 
 const History = () => {
